@@ -810,8 +810,8 @@ class N1qlBase(CollectionBase):
                            % (self.num_insert, self.num_update,
                               self.num_delete))
             stmt.extend(self.clause.get_where_clause(
-                doc_type_list[bucket_col], bucket_col,
-                self.num_insert, self.num_update, self.num_delete))
+                doc_type_list[bucket_col], bucket_col, 2, 0, 3))
+                #self.num_insert, self.num_update, self.num_delete))
             self.process_index_to_create(stmt, bucket_col)
         random.shuffle(stmt)
         stmt_list = self.__chunks(stmt, int(len(stmt)/self.num_txn))
